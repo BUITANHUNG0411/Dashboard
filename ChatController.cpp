@@ -15,7 +15,8 @@ ChatController::ChatController(QObject *parent)
     : QObject(parent), 
       m_networkManager(new QNetworkAccessManager(this)), 
       m_currentModel("gemini-2.5-flash"),
-      m_chatModel(new ChatModel(this))
+      m_chatModel(new ChatModel(this)),
+      m_isDarkMode(false)
 {
 }
 

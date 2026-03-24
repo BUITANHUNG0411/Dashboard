@@ -15,7 +15,7 @@ Window {
         Rectangle {
             Layout.preferredWidth: 250
             Layout.fillHeight: true
-            color: "#064e3b"
+            color: chatBackend.isDarkMode ? "#1e293b" : "#f1f5f9"
 
             ColumnLayout {
                 anchors.fill: parent
@@ -24,7 +24,7 @@ Window {
 
                 Label {
                     text: "AI Configuration"
-                    color: "#ecfdf5"
+                    color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
                     font.bold: true
                     font.pixelSize: 16
                 }
@@ -35,9 +35,16 @@ Window {
                     onActivated: chatBackend.setModel(currentText)
                 }
 
+                Switch {
+                    id : mode
+                    checked: chatBackend.isDarkMode
+                    text: checked ? "Dark mode" : "Light mode"
+                    onToggled: chatBackend.isDarkMode = checked
+                }
+
                 Label {
                     text: "Temperature"
-                    color: "#ecfdf5"
+                    color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
                 }
 
                 Slider {
@@ -66,7 +73,7 @@ Window {
         Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            color: "#f0fdf4"
+            color: chatBackend.isDarkMode ? "#0f172a" : "#ffffff"
 
             ColumnLayout {
                 anchors.fill: parent
@@ -82,14 +89,14 @@ Window {
                     delegate: Item {
                         width: chatView.width
                         height: messageText.implicitHeight + 40
-                        
+
                         Rectangle {
                             width: parent.width - 40
                             height: parent.height - 10
                             anchors.centerIn: parent
-                            color: model.author === "You" ? "#dcfce7" : "#ffffff"
+                            color: model.author === "You" ? (chatBackend.isDarkMode ? "#3b82f6" : "#dbeafe") : (chatBackend.isDarkMode ? "#334155" : "#f1f5f9")
                             radius: 8
-                            
+
                             Text {
                                 id: messageText
                                 text: "<b>" + model.author + ":</b> " + model.text
@@ -97,21 +104,21 @@ Window {
                                 anchors.centerIn: parent
                                 wrapMode: Text.Wrap
                                 font.pixelSize: 14
-                                color: "#064e3b"
+                                color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
                             }
                         }
                     }
-                    
+
                     ScrollBar.vertical: ScrollBar {}
-                    
+
                     onCountChanged: chatView.positionViewAtEnd()
                 }
 
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 80
-                    color: "#d1fae5"
-                    border.color: "#10b981"
+                    color: chatBackend.isDarkMode ? "#1e293b" : "#f8fafc"
+                    border.color: chatBackend.isDarkMode ? "#334155" : "#cbd5e1"
 
                     RowLayout {
                         anchors.fill: parent
