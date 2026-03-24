@@ -51,7 +51,7 @@ void ChatController::sendMessage(QString text)
     
     m_chatModel->appendMessage("You", text);
 
-    QString urlString = "https://generativelanguage.googleapis.com/v1beta/models/" + m_currentModel + ":generateContent?key=AIzaSyDsdemkkx63qG5Wiefofckjhlax0rQSr_c";
+    QString urlString = "https://generativelanguage.googleapis.com/v1beta/models/" + m_currentModel + ":generateContent?key=AIzaSyBvlK0IbYno7WkoV-i-JKi7p1mBv0c3wtM";
     QUrl url(urlString);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
