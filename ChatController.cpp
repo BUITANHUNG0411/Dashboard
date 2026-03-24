@@ -86,6 +86,10 @@ void ChatController::sendMessage(QString text)
             }
         } else {
             m_chatModel->appendMessage("Error", reply->errorString());
+
+            QByteArray errorData = reply->readAll();
+            qDebug() << "HTTP Status:" << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+            qDebug() << "Loi chi tiet:" << errorData;
         }
         reply->deleteLater();
     });

@@ -24,7 +24,7 @@ Window {
 
                 Label {
                     text: "AI Configuration"
-                    color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
+                    color: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                     font.bold: true
                     font.pixelSize: 16
                 }
@@ -32,6 +32,8 @@ Window {
                 ComboBox {
                     Layout.fillWidth: true
                     model: ["Gemini 2.5 Flash", "Gemini 1.5 Pro", "Gemini 1.0 Pro"]
+                    palette.text: chatBackend.isDarkMode ? "#ffffff" : "#000000"
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                     onActivated: chatBackend.setModel(currentText)
                 }
 
@@ -40,11 +42,12 @@ Window {
                     checked: chatBackend.isDarkMode
                     text: checked ? "Dark mode" : "Light mode"
                     onToggled: chatBackend.isDarkMode = checked
+                    palette.windowText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
 
                 Label {
                     text: "Temperature"
-                    color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
+                    color: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
 
                 Slider {
@@ -57,12 +60,14 @@ Window {
                 Button {
                     text: "New Chat"
                     Layout.fillWidth: true
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                     onClicked: chatBackend.clearChat()
                 }
 
                 Button {
                     text: "Export Log"
                     Layout.fillWidth: true
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                     onClicked: chatBackend.exportLog()
                 }
 
@@ -104,7 +109,7 @@ Window {
                                 anchors.centerIn: parent
                                 wrapMode: Text.Wrap
                                 font.pixelSize: 14
-                                color: chatBackend.isDarkMode ? "#f8fafc" : "#0f172a"
+                                color: "#000000"
                             }
                         }
                     }
@@ -130,6 +135,7 @@ Window {
                             Layout.fillWidth: true
                             placeholderText: "Type your message here..."
                             font.pixelSize: 14
+                            color: "#000000"
                             onAccepted: sendButton.clicked()
                         }
 
@@ -137,6 +143,7 @@ Window {
                             id: sendButton
                             text: "Send"
                             Layout.preferredHeight: 40
+                            palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                             onClicked: {
                                 chatBackend.sendMessage(messageInput.text)
                                 messageInput.clear()
