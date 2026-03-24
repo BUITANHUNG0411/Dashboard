@@ -20,6 +20,11 @@ qt_add_qml_module(appChatBotDemo
     URI ChatBotDemo
     QML_FILES
         Main.qml
+        Chatbot.qml
+        Weather.qml
+        Map.qml
+        Contact.qml
+        Music.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
