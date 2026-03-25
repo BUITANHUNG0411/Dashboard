@@ -27,26 +27,31 @@ Window {
                     text: "Chat"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 0
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
                     text: "Weather"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 1
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
                     text: "Map"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 2
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
                     text: "Contact"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 3
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
                     text: "Music"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 4
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 
                 Item { Layout.fillHeight: true }
