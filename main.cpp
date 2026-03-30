@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("chatBackend", &chatBackend);
     engine.rootContext()->setContextProperty("weatherControl", &weatherControl);
-    weatherControl.fetchWeather("Phú Nhuận, thành phố Hồ Chí Minh, Việt Nam");
 
     QObject::connect(
         &engine,

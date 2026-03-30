@@ -14,6 +14,7 @@ Rectangle {
     property string description : "--";
     property string humidity : "--";
     property string windSpeed : "--";
+    property string icon : "";
 
     Connections {
         target: weatherControl
@@ -24,6 +25,7 @@ Rectangle {
             weatherRoot.description = description;
             weatherRoot.humidity = humidity + "%";
             weatherRoot.windSpeed = speed + "km/h";
+            weatherRoot.icon = icon;
         }
     }
 
@@ -50,12 +52,24 @@ Rectangle {
                 Layout.alignment: Qt.AlignHCenter
             }
 
+
             Text {
-                text: "Monday, 24 March"
+                text: Qt.formatDateTime(new Date(), "dddd, d MMMM")
                 font.pixelSize: 16
                 color: Qt.rgba(255, 255, 255, 0.7)
                 Layout.alignment: Qt.AlignHCenter
                 Layout.topMargin: 10
+            }
+
+
+            Image {
+                id: weatherIcon
+                source: weatherRoot.icon ? "http://openweathermap.org/img/wn/" + weatherRoot.icon + "@2x.png" : ""
+                Layout.preferredWidth: 120
+                Layout.preferredHeight: 120
+                Layout.alignment: Qt.AlignHCenter
+                fillMode: Image.PreserveAspectFit
+                opacity: 0.9
             }
 
             Item { Layout.fillHeight: true }
@@ -88,7 +102,7 @@ Rectangle {
 
             RowLayout {
                 Layout.fillWidth: true
-                spacing: 0
+                spacing: 20
 
                 ColumnLayout {
                     Layout.fillWidth: true
