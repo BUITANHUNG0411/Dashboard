@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Network Positioning)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -15,6 +17,11 @@ qt_add_executable(appChatBotDemo
     ChatController.cpp
     ChatModel.h
     ChatModel.cpp
+    WeatherController.h 
+    WeatherController.cpp
+    note.h
+    note.cpp
+
 )
 
 qt_add_qml_module(appChatBotDemo
@@ -26,7 +33,7 @@ qt_add_qml_module(appChatBotDemo
         Map.qml
         Contact.qml
         Music.qml
-        SOURCES WeatherController.h WeatherController.cpp
+        Note.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -43,6 +50,8 @@ set_target_properties(appChatBotDemo PROPERTIES
 target_link_libraries(appChatBotDemo
     PRIVATE Qt6::Quick Qt6::Network Qt6::Positioning
 )
+target_link_libraries(appChatBotDemo PRIVATE Qt6::Core)
+target_link_libraries(appChatBotDemo PRIVATE Qt6::Core)
 target_link_libraries(appChatBotDemo PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)

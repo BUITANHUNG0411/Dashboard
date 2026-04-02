@@ -1,27 +1,27 @@
+#include "ChatController.h"
+#include "WeatherController.h"
+#include "note.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "ChatController.h"
-#include "WeatherController.h"
 
-int main(int argc, char *argv[])
-{
-    QGuiApplication app(argc, argv);
+int main(int argc, char *argv[]) {
+  QGuiApplication app(argc, argv);
 
-    ChatController chatBackend;
-    WeatherController weatherControl;
+  ChatController chatBackend;
+  WeatherController weatherControl;
+  Note noteControl;
 
-    QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("chatBackend", &chatBackend);
-    engine.rootContext()->setContextProperty("weatherControl", &weatherControl);
+  QQmlApplicationEngine engine;
+  engine.rootContext()->setContextProperty("chatBackend", &chatBackend);
+  engine.rootContext()->setContextProperty("weatherControl", &weatherControl);
+  engine.rootContext()->setContextProperty("noteControl", &noteControl);
 
-    QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreationFailed,
-        &app,
-        []() { QCoreApplication::exit(-1); },
-        Qt::QueuedConnection);
-    engine.loadFromModule("ChatBotDemo", "Main");
+      QObject::connect(
+          &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
+          []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
+  engine.loadFromModule("ChatBotDemo", "Main");
 
-    return app.exec();
+  return app.exec();
 }
+ 

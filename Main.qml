@@ -53,6 +53,12 @@ Window {
                     onClicked: stackLayout.currentIndex = 4
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
+                Button {
+                    text: "Note"
+                    Layout.fillWidth: true
+                    onClicked: stackLayout.currentIndex = 5
+                    palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
+                }
                 
                 Item { Layout.fillHeight: true }
 
@@ -77,6 +83,7 @@ Window {
             Map {}
             Contact {}
             Music {}
+            Note {}
         }
     }
 }
