@@ -34,6 +34,7 @@ public:
   Q_INVOKABLE void removeNote(int index);
   Q_INVOKABLE void setContent(int index, QString text);
   Q_INVOKABLE void setStatus(int index, bool status);
+  Q_INVOKABLE void clearAllNote();
 
 private:
   QList<NoteType> m_note;

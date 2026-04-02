@@ -46,6 +46,31 @@ Rectangle {
                     noteControl.addNote();
                 }
             }
+
+            Button {
+                id: trashButton
+                text: "Click to push all notes to trash"
+                flat: true
+                font.weight: Font.Medium
+                background: Rectangle {
+                    implicitWidth: 260
+                    implicitHeight: 40
+                    radius: 20
+                    color: trashButton.pressed ? (chatBackend.isDarkMode ? "#166534" : "#86efac") : (chatBackend.isDarkMode ? "#14532d" : "#bbf7d0")
+                    border.color: chatBackend.isDarkMode ? "#4ade80" : "#22c55e"
+                    border.width: 1
+                }
+                contentItem: Text {
+                    text: trashButton.text
+                    font: trashButton.font
+                    color: chatBackend.isDarkMode ? "#4ade80" : "#166534"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: {
+                    noteControl.clearAllNote();
+                }
+            }
         }
 
         ListView {

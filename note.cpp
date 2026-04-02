@@ -41,6 +41,14 @@ void Note::removeNote(int index) {
   saveNote();
 }
 
+void Note::clearAllNote() {
+  if (m_note.isEmpty()) return;
+  beginRemoveRows(QModelIndex(), 0, m_note.length() - 1);
+  m_note.clear();
+  endRemoveRows();
+  saveNote();
+}
+
 void Note::setContent(int index, QString text) {
   m_note[index].content = text;
   emit dataChanged(createIndex(index, 0), createIndex(index, 0), {contentRole});
