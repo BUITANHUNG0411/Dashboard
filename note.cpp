@@ -11,6 +11,7 @@ QHash<int, QByteArray> Note::roleNames() const {
   QHash<int, QByteArray> role;
   role[contentRole] = "content";
   role[statusRole] = "status";
+  role[timeStampRole] = "timeStamp";
   return role;
 }
 
@@ -18,18 +19,21 @@ QVariant Note::data(const QModelIndex &index, int role) const {
   if (!index.isValid() || index.row() >= m_note.length())
     return QVariant();
   switch (role) {
-  case contentRole:
-    return m_note[index.row()].content;
-  case statusRole:
-    return m_note[index.row()].status;
-  default:
-    return QVariant();
+    case contentRole:
+      return m_note[index.row()].content;
+    case statusRole:
+      return m_note[index.row()].status;
+    case timeStampRole:
+      return m_note[index.row()].timeStamp;
+    default:
+      return QVariant();
   }
 }
 
 void Note::addNote() {
   beginInsertRows(QModelIndex(), m_note.length(), m_note.length());
-  m_note.append({" ", false});
+  QString currentTime = QDateTime::currentDateTime().toString("dd//MM//yyyy HH:mm");
+  m_note.append({" ", false, currentTime});
   endInsertRows();
   saveNote();
 }
@@ -75,6 +79,7 @@ void Note::saveNote() {
     QJsonObject obj;
     obj["content"] = note.content;
     obj["status"] = note.status;
+    obj["timeStamp"] = note.timeStamp;
     jsonArray.append(obj);
   }
 
@@ -107,7 +112,7 @@ void Note::loadNote() {
     for (auto const member : arr){
       if (!member.isObject()) continue;
       QJsonObject obj = member.toObject();
-      m_note.append( {obj["content"].toString(), obj["status"].toBool()} );
+      m_note.append( {obj["content"].toString(), obj["status"].toBool(), obj["timeStamp"].toString()} );
     }
   }
 

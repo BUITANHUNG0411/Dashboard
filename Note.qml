@@ -107,20 +107,28 @@ Rectangle {
                         }
                     }
 
-                    TextField {
-                        id: noteInput
+                    ColumnLayout {
                         Layout.fillWidth: true
-                        text: model.content
-                        placeholderText: "Type note here..."
-                        placeholderTextColor: chatBackend.isDarkMode ? "#30624a" : "#a7f3d0"
-                        font.pixelSize: 16
-                        color: model.status ? (chatBackend.isDarkMode ? "#30624a" : "#94a3b8") : (chatBackend.isDarkMode ? "#ecfdf5" : "#064e3b")
-                        font.strikeout: model.status
-                        selectByMouse: true
-
-                        background: null
-
-                        onEditingFinished: noteControl.setContent(index, text)
+                        spacing: 0
+                        TextField {
+                            id: noteInput
+                            Layout.fillWidth: true
+                            text: model.content
+                            placeholderText: "Type note here..."
+                            placeholderTextColor: chatBackend.isDarkMode ? "#30624a" : "#a7f3d0"
+                            font.pixelSize: 16
+                            color: model.status ? (chatBackend.isDarkMode ? "#30624a" : "#94a3b8") : (chatBackend.isDarkMode ? "#ecfdf5" : "#064e3b")
+                            font.strikeout: model.status
+                            selectByMouse: true
+                            background: null
+                            onEditingFinished: noteControl.setContent(index, text)
+                        }
+                        Label {
+                            text: model.timeStamp
+                            font.pixelSize: 11
+                            color: chatBackend.isDarkMode ? "#30624a" : "#6bc091"
+                            Layout.leftMargin: 0
+                        }
                     }
 
                     CheckBox {

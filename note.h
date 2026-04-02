@@ -12,10 +12,12 @@
 #include <QObject>
 #include <QStandardPaths>
 #include <QString>
+#include <QDateTime>
 
 struct NoteType {
   QString content;
   bool status;
+  QString timeStamp;
 };
 
 class Note : public QAbstractListModel {
@@ -23,12 +25,11 @@ class Note : public QAbstractListModel {
 public:
   explicit Note(QObject *parent = nullptr);
 
-  enum RoleName { contentRole = Qt::UserRole + 1, statusRole };
+  enum RoleName { contentRole = Qt::UserRole + 1, statusRole, timeStampRole };
 
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
   QHash<int, QByteArray> roleNames() const override;
-  QVariant data(const QModelIndex &index,
-                int role = Qt::DisplayRole) const override;
+  QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
   Q_INVOKABLE void addNote();
   Q_INVOKABLE void removeNote(int index);
