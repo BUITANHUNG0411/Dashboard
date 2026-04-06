@@ -7,7 +7,7 @@ Window {
     width: 1200
     height: 800
     visible: true
-    title: qsTr("ChatBot Nav Demo")
+    title: qsTr("Dashboard")
 
     RowLayout {
         anchors.fill: parent
@@ -30,31 +30,31 @@ Window {
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
-                    text: "Weather"
+                    text: "Note"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 1
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
-                    text: "Map"
+                    text: "Weather"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 2
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
-                    text: "Contact"
+                    text: "Map"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 3
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
-                    text: "Music"
+                    text: "Contact"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 4
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
                 }
                 Button {
-                    text: "Note"
+                    text: "Music"
                     Layout.fillWidth: true
                     onClicked: stackLayout.currentIndex = 5
                     palette.buttonText: chatBackend.isDarkMode ? "#ffffff" : "#000000"
@@ -79,11 +79,11 @@ Window {
             currentIndex: 0
 
             Chatbot {}
+            Note {}
             Weather {}
             Map {}
             Contact {}
             Music {}
-            Note {}
         }
     }
 }

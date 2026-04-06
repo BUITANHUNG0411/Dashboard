@@ -21,7 +21,8 @@ qt_add_executable(appChatBotDemo
     WeatherController.cpp
     note.h
     note.cpp
-
+    NoteFilterModel.h 
+    NoteFilterModel.cpp
 )
 
 qt_add_qml_module(appChatBotDemo
@@ -34,6 +35,7 @@ qt_add_qml_module(appChatBotDemo
         Contact.qml
         Music.qml
         Note.qml
+        RESOURCES assets/rubbish.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
